@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Éclat & Fun - Mode, Jouets & Accessoires (Bénin)</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefaf5;
+      color: #1e1e2a;
+      scroll-behavior: smooth;
+    }
+
+    .site-header {
+      background: #ffffffea;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 0.8rem 2rem;
+      border-bottom: 1px solid #f0e4d4;
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #c44b3c, #e09d32);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      color: #7e6b5c;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2d2a24;
+      transition: 0.2s;
+      font-size: 1.05rem;
+      padding: 0.4rem 0;
+      position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #c44b3c;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2.5px;
+      background: #e09d32;
+      transition: 0.25s;
+      border-radius: 4px;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .section {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      scroll-margin-top: 90px;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      letter-spacing: -0.5px;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #e09d32;
+      border-radius: 4px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #faf1e6 0%, #fff4ec 100%);
+      border-radius: 2rem;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero-text h2 {
+      font-size: 2.7rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #2b2b2b;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      margin: 1.5rem 0;
+      color: #5a4a3c;
+      max-width: 500px;
+    }
+    .hero-badge {
+      background: #c44b3c10;
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #c44b3c;
+      font-size: 0.85rem;
+    }
+    .hero-img {
+      flex: 0.8;
+      text-align: center;
+    }
+    .hero-img i {
+      font-size: 12rem;
+      color: #e2c7b0;
+      opacity: 0.6;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .product-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+      border: 1px solid #f3e8df;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
+      border-color: #ffe0cc;
+    }
+    .product-img {
+      width: 100%;
+      height: 230px;
+      background: #f7ede5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .product-card:hover .product-img img {
+      transform: scale(1.03);
+    }
+    .product-info {
+      padding: 1.2rem 1rem 1.5rem;
+    }
+    .product-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .product-category {
+      font-size: 0.8rem;
+      color: #b67b5c;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    .product-price {
+      margin-top: 0.7rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #2f2e2b;
+    }
+    .price-old {
+      text-decoration: line-through;
+      font-size: 0.8rem;
+      color: #aa8976;
+      margin-right: 8px;
+      font-weight: normal;
+    }
+
+    .about-content {
+      background: #ffffffd9;
+      border-radius: 1.8rem;
+      padding: 2rem;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.02);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 2;
+    }
+    .about-text p {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      color: #3e3a34;
+    }
+    .about-highlight {
+      background: #fff1e6;
+      border-left: 5px solid #e09d32;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-wrapper {
+      background: #fffaf5;
+      border-radius: 2rem;
+      padding: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+      border: 1px solid #f3e2d4;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+      font-size: 1rem;
+    }
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+      box-shadow: 0 8px 16px -6px #25d36670;
+      margin-top: 0.8rem;
+    }
+    .whatsapp-btn i {
+      font-size: 1.5rem;
+    }
+    .whatsapp-btn:hover {
+      background: #128C7E;
+      transform: scale(1.02);
+    }
+    .wa-note {
+      font-size: 0.8rem;
+      margin-top: 0.8rem;
+      color: #6e5e4e;
+    }
+    .contact-illustration {
+      flex: 0.6;
+      text-align: center;
+      background: #faeeda;
+      border-radius: 2rem;
+      padding: 1rem;
+    }
+    .contact-illustration i {
+      font-size: 5rem;
+      color: #e09d32;
+    }
+
+    footer {
+      background: #2c2823;
+      color: #e2cfbc;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 850px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .section {
+        padding: 2.5rem 1.2rem;
+      }
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.2rem;
+      }
+      .contact-wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-detail {
+        justify-content: center;
+      }
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .section-title {
+        display: block;
+        text-align: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-text h2 {
+        font-size: 1.9rem;
+      }
+      .nav-links {
+        gap: 1rem;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="logo">
+        <h1><i class="fas fa-store"></i> Éclat & Fun</h1>
+        <p>Mode • Jouets • Accessoires</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#accueil" class="nav-link">Accueil</a></li>
+        <li><a href="#galerie" class="nav-link">Galerie</a></li>
+        <li><a href="#a-propos" class="nav-link">À propos</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ACCUEIL -->
+    <section id="accueil" class="section">
+      <div class="hero">
+        <div class="hero-text">
+          <span class="hero-badge"><i class="fas fa-tags"></i> Nouvelle collection 2025</span>
+          <h2>Style, créativité <br> & douceur enfantine</h2>
+          <p>Découvrez notre univers : vêtements tendance pour toute la famille, jouets éducatifs et accessoires uniques. Faites-vous plaisir avec des pièces soigneusement sélectionnées.</p>
+          <a href="#galerie" style="display: inline-block; background:#c44b3c; color:white; padding:0.7rem 1.5rem; border-radius:40px; text-decoration:none; font-weight:600;"><i class="fas fa-arrow-right"></i> Voir la galerie</a>
+        </div>
+        <div class="hero-img">
+          <i class="fas fa-tshirt"></i> <i class="fas fa-child"></i> <i class="fas fa-cube"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE COMPLÈTE AVEC TOUTES LES IMAGES ET CATÉGORIES DEMANDÉES -->
+    <section id="galerie" class="section">
+      <h2 class="section-title"><i class="fas fa-images"></i> Notre Galerie</h2>
+      <p style="margin-bottom: 2rem; color: #5f4c3c;">Découvrez notre large sélection : vêtements homme, femme, enfants, jouets et accessoires – tous les prix sont en FCFA.</p>
+      <div class="product-grid">
+        <!-- ========== VÊTEMENTS HOMME (8 produits) ========== -->
+        <div class="product-card"><div class="product-img"><img src=" télécharger (6).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-male"></i> Homme</div><div class="product-title">Blazer chic bleu nuit</div><div class="product-price">52 500 FCFA </div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (1).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-male"></i> Homme</div><div class="product-title">Chemise en lin oversize</div><div class="product-price">32 800 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Women's & Men's Clothing, Shop Online Fashion.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-male"></i> Homme</div><div class="product-title">Pantalon chino beige</div><div class="product-price">27 900 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Streetwear Fall Outfit Idea_ Black & White Graphic T-Shirt Set.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-male"></i> Homme</div><div class="product-title">T-shirt coton bio</div><div class="product-price">14 500 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (2).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-male"></i> Homme</div><div class="product-title">Veste en jean</div><div class="product-price">44 200 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (5).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-male"></i> Homme</div><div class="product-title">Pull col roulé</div><div class="product-price">37 500 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Lv.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-male"></i> Homme</div><div class="product-title">Costume slim gris</div><div class="product-price">124 900 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" シ︎.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-male"></i> Homme</div><div class="product-title">Bermuda cargo</div><div class="product-price">19 900 FCFA</div></div></div>
+
+        <!-- ========== VÊTEMENTS FEMME (8 produits) ========== -->
+        <div class="product-card"><div class="product-img"><img src=" télécharger (8).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-female"></i> Femme</div><div class="product-title">Robe longue bohème</div><div class="product-price">42 700 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src="https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Sac à main" loading="lazy"></div><div class="product-info"><div class="product-category"><i class="fas fa-handbag"></i> Accessoire</div><div class="product-title">Sac en cuir végétal</div><div class="product-price">26 200 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (10).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-female"></i> Femme</div><div class="product-title">Blazer cintré</div><div class="product-price">48 300 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Women Jumpsuit Loose Fashion Elegant Long Pants Short Sleeve Halterneck Art Print Sets High Streetwear For Women.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-female"></i> Femme</div><div class="product-title">Jupe plissée métallique</div><div class="product-price">29 500 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (9).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-female"></i> Femme</div><div class="product-title">Pull oversize</div><div class="product-price">34 200 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Temu_ Einkaufen wie ein Milliardär.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-female"></i> Femme</div><div class="product-title">Robe cocktail noire</div><div class="product-price">56 900 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (7).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-female"></i> Femme</div><div class="product-title">Tailleur pantalon</div><div class="product-price">82 500 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (13).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-female"></i> Femme</div><div class="product-title">Chemisier en soie</div><div class="product-price">38 700 FCFA</div></div></div>
+
+        <!-- ========== VÊTEMENTS ENFANTS GARÇONS (4 produits) ========== -->
+        <div class="product-card"><div class="product-img"><img src=" télécharger (17).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-child"></i> Garçon</div><div class="product-title">Survêtement graphique</div><div class="product-price">21 600 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (14).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-child"></i> Garçon</div><div class="product-title">T-shirt imprimé dinosaure</div><div class="product-price">9 500 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (16).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-child"></i> Garçon</div><div class="product-title">Short en jean</div><div class="product-price">12 300 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Set van 2 stuks voor jonge jongens, comfortabel, veelzijdig, losvallend, Japanse en Koreaanse stijl, minimalistische sportstijl, letterprint, bloemengrijze splicing, contrasterend mouwloos vest met korte mouwen, .jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-child"></i> Garçon</div><div class="product-title">Veste polaire</div><div class="product-price">18 900 FCFA</div></div></div>
+
+        <!-- ========== VÊTEMENTS ENFANTS FILLES (4 produits) ========== -->
+        <div class="product-card"><div class="product-img"><img src="Váy denim hở lưng hở lưng trơn màu trơn mùa hè thu cho bé gái tuổi mới lớn, không tay, thích hợp cho du lịch hàng ngày, ngoài trời, ở nhà, ăn trưa, tiệc trà, đi làm, mặc ở sân bay, trang phục mùa thu cho bé g (1).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-child"></i> Fille</div><div class="product-title">Jupe pailletée & top</div><div class="product-price">18 700 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (15).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-child"></i> Fille</div><div class="product-title">Robe princesse tulle</div><div class="product-price">22 500 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Cô Gái Trẻ In hoa Viền Ruffle Áo & Quần Short có thắt lưng Bộ.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-child"></i> Fille</div><div class="product-title">Legging imprimé</div><div class="product-price">8 900 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Váy denim hở lưng hở lưng trơn màu trơn mùa hè thu cho bé gái tuổi mới lớn, không tay, thích hợp cho du lịch hàng ngày, ngoài trời, ở nhà, ăn trưa, tiệc trà, đi làm, mặc ở sân bay, trang phục mùa thu cho bé g (1).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-child"></i> Fille</div><div class="product-title">Sweat à paillettes</div><div class="product-price">15 200 FCFA</div></div></div>
+
+        <!-- ========== JOUETS POUR ENFANTS (4 produits) ========== -->
+        <div class="product-card"><div class="product-img"><img src=" Tacobear Camion Construction Jouet Enfant Garçon Grand Véhicules Chantier avec Excavatrice Tombereau, Camion Transporteur Construction Jouet Cadeau.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-puzzle-piece"></i> Jouets éducatifs</div><div class="product-title">Blocs de construction</div><div class="product-price">16 350 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" télécharger (18).jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-heart"></i> Peluche</div><div class="product-title">Peluche ours 50cm</div><div class="product-price">13 100 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Toyokid Jouet Enfant 3 4 5 6 7 8 9 10 Ans Garcon, Talkie Walkie Enfants Cadeau Enfant 3 4 5 6 7 8 9 10 Ans Jeux d'extérieur Enfants Toki Walki Cadeau.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-puzzle-piece"></i> Jouets éducatifs</div><div class="product-title">Puzzle animaux 100pcs</div><div class="product-price">9 900 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Jouet en peluche dinosaure coloré de dessin animé pour enfants, animaux en peluche mignons,.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-car"></i> Jouets</div><div class="product-title">Voiture RC sportive</div><div class="product-price">24 500 FCFA</div></div></div>
+
+        <!-- ========== PETITS TRUCS / AUTRES (4 produits) ========== -->
+        <div class="product-card"><div class="product-img"><img src=" Accessorize.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-clock"></i> Autres</div><div class="product-title">Montre minimaliste</div><div class="product-price">39 400 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Bracelet.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-gem"></i> Autres</div><div class="product-title">Coffret bijoux artisanaux</div><div class="product-price">22 350 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src="https://images.pexels.com/photos/2783873/pexels-photo-2783873.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Casquette streetwear" loading="lazy"></div><div class="product-info"><div class="product-category"><i class="fas fa-hat-cowboy"></i> Autres</div><div class="product-title">Casquette streetwear</div><div class="product-price">9 900 FCFA</div></div></div>
+        <div class="product-card"><div class="product-img"><img src=" Accessorize.jpg"></div><div class="product-info"><div class="product-category"><i class="fas fa-sunglasses"></i> Autres</div><div class="product-title">Lunettes de soleil tendance</div><div class="product-price">14 200 FCFA</div></div></div>
+      </div>
+      <p style="margin-top: 2rem; text-align: center; font-style: italic; color:#ba8468;">✨ Plus de 30 articles soigneusement sélectionnés – Tous les prix sont en FCFA (Franc CFA).</p>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="a-propos" class="section">
+      <h2 class="section-title"><i class="fas fa-leaf"></i> À propos de nous</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p><strong>Éclat & Fun</strong> est né d’une passion : proposer des vêtements stylés pour toute la famille, des jouets qui éveillent la curiosité et des accessoires qui subliment le quotidien.</p>
+          <p>Nous sélectionnons avec soin des matières douces, durables et des designs actuels pour hommes, femmes et enfants. Notre galerie met également en avant des jouets éducatifs en bois, des peluches réconfortantes et des "autres trucs" originaux (montres, bijoux, sacs).</p>
+          <div class="about-highlight">
+            <i class="fas fa-check-circle" style="color:#e09d32"></i>  Livraison rapide au Bénin & international • Paiement sécurisé • Service client à l’écoute
+          </div>
+        </div>
+        <div style="flex:1; text-align:center;">
+          <i class="fas fa-hands-helping" style="font-size: 4rem; color: #c44b3c;"></i>
+          <p style="margin-top:0.5rem;">Qualité & partage</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT + WHATSAPP avec le numéro +229 01 66 86 35 53 -->
+    <section id="contact" class="section">
+      <h2 class="section-title"><i class="fas fa-comments"></i> Contactez-nous</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3>Discutons de vos envies !</h3>
+          <p>Une question sur un produit, une commande personnalisée ? Écrivez-nous directement sur WhatsApp, nous répondons sous 24h.</p>
+          <div class="contact-detail">
+            <i class="fab fa-whatsapp" style="font-size: 1.7rem; color:#25D366;"></i>
+            <span><strong>WhatsApp :</strong> +229 01 66 86 35 53</span>
+          </div>
+          <a href="https://wa.me/2290166863553?text=Bonjour%21%20Je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20vos%20produits%20sur%20votre%20site%20web.%20Pouvez-vous%20me%20renseigner%20%3F" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Envoyer un message WhatsApp
+          </a>
+          <div class="wa-note">
+            <i class="fas fa-info-circle"></i> Cliquez sur le bouton pour démarrer une discussion avec notre équipe commerciale.
+          </div>
+        </div>
+        <div class="contact-illustration">
+          <i class="fas fa-mobile-alt"></i>
+          <i class="fab fa-whatsapp" style="font-size: 3rem; margin: 0.5rem;"></i>
+          <p>Réponse rapide via WhatsApp</p>
+          <small>Service client dédié</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><i class="far fa-copyright"></i> 2025 Éclat & Fun – Mode, Jouets & Accessoires. Tous droits réservés.</p>
+    <p style="margin-top: 0.5rem;">Vêtements homme, femme, enfant • Jouets créatifs • Autres trésors | Prix en FCFA</p>
+  </footer>
+
+  <!-- Navigation active au scroll et clic smooth -->
+  <script>
+    (function() {
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      function updateActiveLink() {
+        let currentSectionId = '';
+        const scrollPos = window.scrollY + 150;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href').substring(1);
+          if (href === currentSectionId) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveLink);
+      window.addEventListener('load', updateActiveLink);
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            const offset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
